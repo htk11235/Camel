@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -84,8 +85,15 @@ import java.util.logging.Logger;
                               panel = new TimekeepingJPanel();
                               break;
                           case "Postion":
-                              panel = new PostionJPanel();
+                          {
+                              try {
+                                  panel = new PostionJPanel();
+                              } catch (SQLException ex) {
+                                  Logger.getLogger(ChuyenManHinh.class.getName()).log(Level.SEVERE, null, ex);
+                              }
+                          }
                               break;
+
                           case "Salary":
                               panel = new SalaryJPanel();
                               break;

@@ -39,5 +39,7 @@ public class DepartmentService {
     public int deleteDepartment(int id) throws SQLException {
         return depDAO.deleteDepartment(id);
     }
-
+      public Department getDepartmentByName(String  name) throws SQLException {
+          return depDAO.getDepartmentByName(name);
+      }
 }

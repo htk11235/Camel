@@ -4,17 +4,62 @@
  */
 package Camel.view;
 
+import Camel.model.Postion;
+import Camel.service.PostionService;
+import Camel.view.CRUD_View.Postion_Add;
+import Camel.view.CRUD_View.Postion_Edit;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author Jonny Dam
  */
 public class PostionJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PoisitionJPanel
-     */
-    public PostionJPanel() {
+    private PostionService postionService;
+    public DefaultTableModel getModelTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable_16.getModel();
+        return model;
+    }
+
+    public void searchTable(String value) {
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(getModelTable());
+        jTable_16.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(value));
+    }
+
+    DefaultTableModel defaultTableModel;
+    public PostionJPanel() throws SQLException {
         initComponents();
+         postionService = new PostionService();
+
+        defaultTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        jTable_16.setModel(defaultTableModel);
+        defaultTableModel.addColumn("id");
+        defaultTableModel.addColumn("name");
+        setTableData(postionService.getAllPostion());
+    }
+
+    private void setTableData(List<Postion> postion) {
+        for (Postion Postion : postion) {
+            defaultTableModel.addRow(new Object[]{Postion.getPostion_Id(), Postion.getPostion_Name()});
+        }
+    }
+
+    private void refreshTableData(List<Postion> postion) {
+        defaultTableModel.setRowCount(0);
+        setTableData(postion);
     }
 
     /**
@@ -27,29 +72,29 @@ public class PostionJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField_search_12 = new javax.swing.JTextField();
+        jTextField_search_16 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_12 = new javax.swing.JTable();
-        jButton_Refresh_12 = new javax.swing.JButton();
-        jButton_Add_12 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton_Del_12 = new javax.swing.JButton();
-        jLabel_DpScreen_12 = new javax.swing.JLabel();
+        jTable_16 = new javax.swing.JTable();
+        jButton_Refresh_16 = new javax.swing.JButton();
+        jButton_Add_16 = new javax.swing.JButton();
+        jButton_Edit_16 = new javax.swing.JButton();
+        jButton_Del_16 = new javax.swing.JButton();
+        jLabel_DpScreen_16 = new javax.swing.JLabel();
 
         jLabel1.setText("Search");
 
-        jTextField_search_12.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_search_16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_search_12ActionPerformed(evt);
+                jTextField_search_16ActionPerformed(evt);
             }
         });
-        jTextField_search_12.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextField_search_16.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField_search_12KeyReleased(evt);
+                jTextField_search_16KeyReleased(evt);
             }
         });
 
-        jTable_12.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_16.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,48 +105,48 @@ public class PostionJPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable_12);
+        jScrollPane1.setViewportView(jTable_16);
 
-        jButton_Refresh_12.setText("Refresh");
-        jButton_Refresh_12.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Refresh_16.setText("Refresh");
+        jButton_Refresh_16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Refresh_12ActionPerformed(evt);
+                jButton_Refresh_16ActionPerformed(evt);
             }
         });
 
-        jButton_Add_12.setBackground(new java.awt.Color(40, 133, 55));
-        jButton_Add_12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_Add_12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Add_12.setText("ADD");
-        jButton_Add_12.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Add_16.setBackground(new java.awt.Color(40, 133, 55));
+        jButton_Add_16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton_Add_16.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Add_16.setText("ADD");
+        jButton_Add_16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Add_12ActionPerformed(evt);
+                jButton_Add_16ActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(25, 114, 219));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("EDIT");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Edit_16.setBackground(new java.awt.Color(25, 114, 219));
+        jButton_Edit_16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton_Edit_16.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Edit_16.setText("EDIT");
+        jButton_Edit_16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_Edit_16ActionPerformed(evt);
             }
         });
 
-        jButton_Del_12.setBackground(new java.awt.Color(237, 74, 74));
-        jButton_Del_12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_Del_12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Del_12.setText("DELETE");
-        jButton_Del_12.setPreferredSize(new java.awt.Dimension(80, 21));
-        jButton_Del_12.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Del_16.setBackground(new java.awt.Color(237, 74, 74));
+        jButton_Del_16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton_Del_16.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Del_16.setText("DELETE");
+        jButton_Del_16.setPreferredSize(new java.awt.Dimension(80, 21));
+        jButton_Del_16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Del_12ActionPerformed(evt);
+                jButton_Del_16ActionPerformed(evt);
             }
         });
 
-        jLabel_DpScreen_12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel_DpScreen_12.setText("Postion Screen");
+        jLabel_DpScreen_16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel_DpScreen_16.setText("Postion Screen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,24 +156,24 @@ public class PostionJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel_DpScreen_12)
+                        .addComponent(jLabel_DpScreen_16)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton_Add_12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_Add_16, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_Edit_16, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton_Del_12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_Del_16, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(11, 11, 11))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField_search_12, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField_search_16, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton_Refresh_12))
+                                        .addComponent(jButton_Refresh_16))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addContainerGap())))))
@@ -136,74 +181,78 @@ public class PostionJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel_DpScreen_12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_DpScreen_16, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_search_12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Refresh_12))
+                    .addComponent(jTextField_search_16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Refresh_16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Add_12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Del_12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Add_16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Edit_16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Del_16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_search_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_search_12ActionPerformed
+    private void jTextField_search_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_search_16ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_search_12ActionPerformed
+    }//GEN-LAST:event_jTextField_search_16ActionPerformed
 
-    private void jTextField_search_12KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_search_12KeyReleased
-//        searchTable(jTextField_search_12.getText());
-    }//GEN-LAST:event_jTextField_search_12KeyReleased
+    private void jTextField_search_16KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_search_16KeyReleased
+        searchTable(jTextField_search_16.getText());
+    }//GEN-LAST:event_jTextField_search_16KeyReleased
 
-    private void jButton_Refresh_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Refresh_12ActionPerformed
-//        DepartmentService departmentService;
-//        departmentService = new DepartmentService();
-//        try {
-//            refreshTableData(departmentService.getAllDepartment());
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DepartmentJPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_jButton_Refresh_12ActionPerformed
+    private void jButton_Refresh_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Refresh_16ActionPerformed
+       
+      
+        try {
+            refreshTableData(postionService.getAllPostion());
+        } catch (SQLException ex) {
+            Logger.getLogger(PostionJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton_Refresh_16ActionPerformed
 
-    private void jButton_Add_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_12ActionPerformed
+    private void jButton_Add_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_16ActionPerformed
 
-//        new Department_Add().setVisible(true);
-    }//GEN-LAST:event_jButton_Add_12ActionPerformed
+        new Postion_Add().setVisible(true);
+    }//GEN-LAST:event_jButton_Add_16ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//        DefaultTableModel tblModel = (DefaultTableModel) jTable_12.getModel();
-//        int id = Integer.parseInt(tblModel.getValueAt(jTable_12.getSelectedRow(), 0).toString());
-//        System.out.println(id);
-//        new Department_Edit(id).setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButton_Edit_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_16ActionPerformed
+        DefaultTableModel tblModel = (DefaultTableModel) jTable_16.getModel();
+        int id = Integer.parseInt(tblModel.getValueAt(jTable_16.getSelectedRow(), 0).toString());
+        System.out.println(id);
+        new Postion_Edit(id).setVisible(true);
+    }//GEN-LAST:event_jButton_Edit_16ActionPerformed
 
-    private void jButton_Del_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Del_12ActionPerformed
-//        DefaultTableModel tblModel = (DefaultTableModel) jTable_12.getModel();
-//        int id = Integer.parseInt(tblModel.getValueAt(jTable_12.getSelectedRow(), 0).toString());
-//        try {
-//            departmentService.deleteDepartment(id);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DepartmentJPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_jButton_Del_12ActionPerformed
+    private void jButton_Del_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Del_16ActionPerformed
+  DefaultTableModel tblModel = (DefaultTableModel) jTable_16.getModel();
+        int id = Integer.parseInt(tblModel.getValueAt(jTable_16.getSelectedRow(), 0).toString());
+        
+        try {
+            postionService.deletePostion(id);
+            refreshTableData(postionService.getAllPostion());
+        } catch (SQLException ex) {
+            Logger.getLogger(PostionJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_jButton_Del_16ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton_Add_12;
-    private javax.swing.JButton jButton_Del_12;
-    private javax.swing.JButton jButton_Refresh_12;
+    private javax.swing.JButton jButton_Add_16;
+    private javax.swing.JButton jButton_Del_16;
+    private javax.swing.JButton jButton_Edit_16;
+    private javax.swing.JButton jButton_Refresh_16;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel_DpScreen_12;
+    private javax.swing.JLabel jLabel_DpScreen_16;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_12;
-    private javax.swing.JTextField jTextField_search_12;
+    private javax.swing.JTable jTable_16;
+    private javax.swing.JTextField jTextField_search_16;
     // End of variables declaration//GEN-END:variables
 }

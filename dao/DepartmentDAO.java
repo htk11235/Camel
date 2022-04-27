@@ -74,7 +74,33 @@ public class DepartmentDAO {
 
         return null;
     }
+  public Department getDepartmentByName(String  name) throws SQLException {
 
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "SELECT * FROM  departments WHERE department_Name = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Department department = new Department();
+                preparedStatement.setString(1, name);
+
+                department.setDepartment_Id(rs.getInt("department_Id"));
+                department.setDepartment_Name(rs.getString("department_Name"));
+             
+                return department;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
     public int addDepartment(Department department) throws SQLException {
 
         Connection connection = JDBCConnection.getJDBCConnection();
