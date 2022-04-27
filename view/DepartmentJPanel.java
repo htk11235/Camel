@@ -1,19 +1,19 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vy.department_12;
+package Camel.view;
 
 /**
  *
- * @author LENOVO
+ * @author Jonny Dam
  */
-public class DepartmentScreen_12 extends javax.swing.JFrame {
+public class DepartmentJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DepartmentScreen_12
+     * Creates new form DepartmentJPanel
      */
-    public DepartmentScreen_12() {
+    public DepartmentJPanel() {
         initComponents();
     }
 
@@ -26,7 +26,6 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel_12 = new javax.swing.JPanel();
         jLabel_img_12 = new javax.swing.JLabel();
         jLabel_DpScreen_12 = new javax.swing.JLabel();
@@ -55,13 +54,10 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
         jLabel_X_12 = new javax.swing.JLabel();
         jLabel_Minus_12 = new javax.swing.JLabel();
 
-        jLabel1.setText("jLabel1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(232, 232, 232));
+        setPreferredSize(new java.awt.Dimension(650, 600));
 
         jPanel_12.setBackground(new java.awt.Color(238, 238, 238));
-
-        jLabel_img_12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/department _12.png"))); // NOI18N
 
         jLabel_DpScreen_12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel_DpScreen_12.setText("Department Screen");
@@ -162,7 +158,6 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
         jLabel_nubHR_13.setText("6");
 
         jButton_search_12.setBackground(new java.awt.Color(255, 153, 0));
-        jButton_search_12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jButton_search_12.setText("Search");
         jButton_search_12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,7 +277,7 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
                                 .addComponent(jTextField_search_12, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton_search_12)))
-                        .addGap(0, 50, Short.MAX_VALUE))
+                        .addGap(0, 8, Short.MAX_VALUE))
                     .addGroup(jPanel_12Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton_Add_12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,7 +343,7 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_12Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
                         .addGroup(jPanel_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
                             .addComponent(jButton2)
@@ -356,8 +351,8 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -369,56 +364,19 @@ public class DepartmentScreen_12 extends javax.swing.JFrame {
                 .addComponent(jPanel_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_search_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_search_12ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton_search_12ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DepartmentScreen_12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DepartmentScreen_12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DepartmentScreen_12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DepartmentScreen_12.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DepartmentScreen_12().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton_Add_12;
     private javax.swing.JButton jButton_search_12;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Admin_12;
     private javax.swing.JLabel jLabel_DpScreen_12;
     private javax.swing.JLabel jLabel_HR_12;
