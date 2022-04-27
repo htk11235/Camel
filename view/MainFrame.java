@@ -6,8 +6,11 @@ package Camel.view;
 
 import Camel.bean.DanhMucBean;
 import Camel.controller.ChuyenManHinh;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame() throws SQLException {
         initComponents();
         
         setTitle("Quan Ly");
@@ -29,7 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
         listDanhMuc.add(new DanhMucBean("Department", jPanel2_Departement, jLabel_Department));
         listDanhMuc.add(new DanhMucBean("Employee", jPanel1_Employee, jLabel1_Employee));
         listDanhMuc.add(new DanhMucBean("Timekeeping", jPanel1_Timekeeping, jLabel1_Timekeeping));
-        listDanhMuc.add(new DanhMucBean("Poisition", jPanel1_Poisition, jLabel1_Poisition));
+        listDanhMuc.add(new DanhMucBean("Postion", jPanel1_Postion, jLabel1_Postion));
         listDanhMuc.add(new DanhMucBean("Salary", jPanel2_Salary, jLabel_Salary));
         
         controller.setEvent(listDanhMuc);
@@ -58,8 +61,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1_Timekeeping = new javax.swing.JPanel();
         jLabel1_Timekeeping = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel1_Poisition = new javax.swing.JPanel();
-        jLabel1_Poisition = new javax.swing.JLabel();
+        jPanel1_Postion = new javax.swing.JPanel();
+        jLabel1_Postion = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2_Salary = new javax.swing.JPanel();
         jLabel_Salary = new javax.swing.JLabel();
@@ -170,33 +173,33 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jPanel1_Poisition.setBackground(new java.awt.Color(99, 99, 99));
-        jPanel1_Poisition.setPreferredSize(new java.awt.Dimension(200, 60));
+        jPanel1_Postion.setBackground(new java.awt.Color(99, 99, 99));
+        jPanel1_Postion.setPreferredSize(new java.awt.Dimension(200, 60));
 
-        jLabel1_Poisition.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1_Poisition.setForeground(new java.awt.Color(232, 232, 232));
-        jLabel1_Poisition.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1_Poisition.setText("Poisition");
+        jLabel1_Postion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1_Postion.setForeground(new java.awt.Color(232, 232, 232));
+        jLabel1_Postion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1_Postion.setText("Postion");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Camel/img/1570970 (1).png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1_PoisitionLayout = new javax.swing.GroupLayout(jPanel1_Poisition);
-        jPanel1_Poisition.setLayout(jPanel1_PoisitionLayout);
-        jPanel1_PoisitionLayout.setHorizontalGroup(
-            jPanel1_PoisitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1_PoisitionLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1_PostionLayout = new javax.swing.GroupLayout(jPanel1_Postion);
+        jPanel1_Postion.setLayout(jPanel1_PostionLayout);
+        jPanel1_PostionLayout.setHorizontalGroup(
+            jPanel1_PostionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1_PostionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1_Poisition, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addComponent(jLabel1_Postion, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1_PoisitionLayout.setVerticalGroup(
-            jPanel1_PoisitionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1_PostionLayout.setVerticalGroup(
+            jPanel1_PostionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-            .addGroup(jPanel1_PoisitionLayout.createSequentialGroup()
+            .addGroup(jPanel1_PostionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1_Poisition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1_Postion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -282,7 +285,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jPanel2_Departement, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1_Timekeeping, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1_Poisition, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1_Postion, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -297,7 +300,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1_Timekeeping, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1_Poisition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1_Postion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -369,7 +372,11 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -377,7 +384,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_Employee;
-    private javax.swing.JLabel jLabel1_Poisition;
+    private javax.swing.JLabel jLabel1_Postion;
     private javax.swing.JLabel jLabel1_Timekeeping;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -391,7 +398,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1_Employee;
     private javax.swing.JPanel jPanel1_Logo;
     private javax.swing.JPanel jPanel1_Navbar;
-    private javax.swing.JPanel jPanel1_Poisition;
+    private javax.swing.JPanel jPanel1_Postion;
     private javax.swing.JPanel jPanel1_Timekeeping;
     private javax.swing.JPanel jPanel2_Departement;
     private javax.swing.JPanel jPanel2_Salary;

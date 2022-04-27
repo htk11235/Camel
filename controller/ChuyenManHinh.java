@@ -14,9 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Camel.view.DepartmentJPanel;
 import Camel.view.EmployeeJPanel;
-import Camel.view.PoisitionJPanel;
+import Camel.view.PostionJPanel;
 import Camel.view.SalaryJPanel;
 import Camel.view.TimekeepingJPanel;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Jonny Dam
@@ -30,7 +33,7 @@ import Camel.view.TimekeepingJPanel;
                 this.jpbView = jpbView;
             }
                     
-            public void setDashboard(JPanel jpnItem, JLabel jlbItem) {
+            public void setDashboard(JPanel jpnItem, JLabel jlbItem) throws SQLException {
                kindSelected = "Department";
                jpnItem.setBackground(new Color(0, 118, 104));
                jlbItem.setBackground(new Color(0, 118, 104));
@@ -65,16 +68,23 @@ import Camel.view.TimekeepingJPanel;
                 public void mouseClicked(MouseEvent e) {
                       switch (kind) {
                           case "Department":
-                              panel = new DepartmentJPanel();
+                          {
+                              try {
+                                  panel = new DepartmentJPanel();
+                              } catch (SQLException ex) {
+                                  Logger.getLogger(ChuyenManHinh.class.getName()).log(Level.SEVERE, null, ex);
+                              }
+                          }
                               break;
+
                           case "Employee":
                               panel = new EmployeeJPanel();
                               break;
                           case "Timekeeping":
                               panel = new TimekeepingJPanel();
                               break;
-                          case "Poisition":
-                              panel = new PoisitionJPanel();
+                          case "Postion":
+                              panel = new PostionJPanel();
                               break;
                           case "Salary":
                               panel = new SalaryJPanel();
